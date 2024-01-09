@@ -2,7 +2,8 @@ using REST.API.Entities;
 
 namespace REST.API.Repositories;
 
-public class InMemGameRepository
+
+public class InMemGameRepository : IGameRepository
 {
     private readonly List<Game> games = new()
     {
@@ -33,13 +34,13 @@ public class InMemGameRepository
 
     public void Update(Game updatedGame)
     {
-        var index = games.FindIndex(game=> game.Id==updatedGame.Id);
+        var index = games.FindIndex(game => game.Id == updatedGame.Id);
         games[index] = updatedGame;
     }
 
     public void Delete(int id)
     {
-        var index = games.FindIndex(game=> game.Id == id);
+        var index = games.FindIndex(game => game.Id == id);
         games.RemoveAt(index);
     }
 }
