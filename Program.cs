@@ -6,10 +6,7 @@ using REST.API.Repositories;
 
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddSingleton<IGameRepository, InMemGameRepository>();
-
-var connString = builder.Configuration["ConnectionStrings:GameStoreContext"];
-builder.Services.AddSqlServer<GameStoreContext>(connString);
+builder.Services.AddRepositories(builder.Configuration);
 var app = builder.Build();
 
 app.Services.InitialDB();

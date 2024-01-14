@@ -15,25 +15,25 @@ public class EntityFrameworkGamesRepository : IGameRepository
 
     public void Create(Game game)
     {
-        dbContext.Games.Add(game);
+        dbContext.Game.Add(game);
         dbContext.SaveChanges();
     }
 
     public void Delete(int id)
     {
-        dbContext.Games.Where(game=>game.Id==id)
+        dbContext.Game.Where(game=>game.Id==id)
                        .ExecuteDelete();
-        
+                       
     }
 
     public Game? Get(int id)
     {
-        return dbContext.Games.Find(id);
+        return dbContext.Game.Find(id);
     }
 
     public IEnumerable<Game> GetAll()
     {
-        return dbContext.Games.AsNoTracking().ToList();
+        return dbContext.Game.AsNoTracking().ToList();
     }
 
     public void Update(Game updatedGame)

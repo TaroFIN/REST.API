@@ -12,7 +12,7 @@ public class GameStoreContext : DbContext
 
     }
 
-    public DbSet<Game> Games => Set<Game>();
+    public DbSet<Game> Game => Set<Game>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
