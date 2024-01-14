@@ -1,3 +1,4 @@
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using REST.API.Entities;
 
@@ -12,5 +13,10 @@ public class GameStoreContext : DbContext
     }
 
     public DbSet<Game> Game => Set<Game>();
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    }
 
 }
