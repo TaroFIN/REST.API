@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRepositories(builder.Configuration);
 var app = builder.Build();
 
-app.Services.InitialDB();
+await app.Services.InitialDB();
 
 app.MapGamesEndpoints();
 

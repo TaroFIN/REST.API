@@ -5,11 +5,11 @@ namespace REST.API.Data;
 
 public static class DataExtensions
 {
-    public static void InitialDB(this IServiceProvider serviceProvider)
+    public static async Task InitialDB(this IServiceProvider serviceProvider)
     {
         using var scope = serviceProvider.CreateScope();
         var DbContext = scope.ServiceProvider.GetRequiredService<GameStoreContext>();
-        DbContext.Database.Migrate();
+        await DbContext.Database.MigrateAsync();
     }
 
     public static IServiceCollection AddRepositories(this IServiceCollection services, IConfiguration configuration)
