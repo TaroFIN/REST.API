@@ -4,10 +4,10 @@ namespace REST.API.Repositories
 {
     public interface IGameRepository
     {
-        IEnumerable<Game> GetAll();
-        Game? Get(int id);
-        void Create(Game game);
-        void Update(Game updatedGame);
-        void Delete(int id);
+        Task<IEnumerable<Game>> GetAllAsync();
+        Task <Game?> GetAsync(int id);
+        Task CreateAsync(Game game);
+        Task UpdateAsync(Game updatedGame);
+        Task DeleteAsync(int id);
     }
 }

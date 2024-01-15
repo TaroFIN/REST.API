@@ -14,7 +14,7 @@ public static class DataExtensions
 
     public static IServiceCollection AddRepositories(this IServiceCollection services, IConfiguration configuration)
     {
-        var connString = configuration["ConnectionStrings:GameStoreContext"];
+        var connString = configuration.GetConnectionString("GameStoreContext");
         services.AddSqlServer<GameStoreContext>(connString)
                 .AddScoped<IGameRepository, EntityFrameworkGamesRepository>();;
 
