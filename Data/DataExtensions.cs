@@ -16,7 +16,10 @@ public static class DataExtensions
     {
         var connString = configuration.GetConnectionString("GameStoreContext");
         services.AddSqlServer<GameStoreContext>(connString)
-                .AddScoped<IGameRepository, EntityFrameworkGamesRepository>();;
+                .AddScoped<IGameRepository, EntityFrameworkGamesRepository>()
+                .AddEndpointsApiExplorer()
+                .AddSwaggerGen();
+                
 
         return services;
     }
