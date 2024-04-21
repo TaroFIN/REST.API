@@ -2,7 +2,7 @@ using REST.API.Dtos;
 
 namespace REST.API.Entities;
 
-public static class EntityExtensions
+public static class GameExtensions
 {
     public static GameDto AsDto(this Game game)
     {

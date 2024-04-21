@@ -14,7 +14,7 @@ public static class GameEndpoints
 
         group.MapGet("/", async (IGameRepository repository) => (await repository.GetAllAsync()).Select(game=>game.AsDto()));
 
-        group.MapGet("/{id}", async(IGameRepository repository, int id) =>
+        group.MapGet("/v1/{id}", async(IGameRepository repository, int id) =>
         {
             Game? game = await repository.GetAsync(id);
             return game is not null ? Results.Ok(game.AsDto()) : Results.NotFound();
@@ -33,7 +33,7 @@ public static class GameEndpoints
             return Results.CreatedAtRoute(GetGameEndPointName, new { id = game.Id }, game);
         });
 
-        group.MapPut("/{id}", async(IGameRepository repository, int id, GameDto updatedGameDto) =>
+        group.MapPut("/v1/{id}", async(IGameRepository repository, int id, GameDto updatedGameDto) =>
         {
             Game? existGame = await repository.GetAsync(id);
 
@@ -47,7 +47,7 @@ public static class GameEndpoints
             return Results.NoContent();
         });
 
-        group.MapDelete("/{id}", async(IGameRepository repository, int id) =>
+        group.MapDelete("/v1/{id}", async(IGameRepository repository, int id) =>
         {
             Game? Game = await repository.GetAsync(id);
 
